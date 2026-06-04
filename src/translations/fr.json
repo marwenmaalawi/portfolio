@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack Senior",
+    "description": "Ingénieur Logiciel Full-Stack Senior spécialisé en NestJS, Next.js, React Native et Spring Boot. Construction de plateformes production de l'architecture au déploiement.",
+    "og_title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack Senior",
+    "og_description": "Ingénieur Plateforme & Produit. NestJS · Next.js · React Native · Spring Boot · DevOps"
+  },
+  "nav": {
+    "about": "À propos",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "engineering": "Ingénierie",
+    "github": "GitHub",
+    "contact": "Contact",
+    "resume": "CV"
+  },
+  "hero": {
+    "available": "Disponible pour de nouvelles opportunités",
+    "role": "Ingénieur Logiciel Full-Stack Senior",
+    "tagline": "Je conçois, construis, déploie et maintiens des plateformes production — de l'architecture au CI/CD.",
+    "cta_resume": "Télécharger le CV",
+    "cta_projects": "Voir les projets",
+    "cta_contact": "Me contacter",
+    "scroll": "Faire défiler pour explorer"
+  },
+  "about": {
+    "section_label": "À propos",
+    "positioning_label": "Ingénieur Plateforme & Produit",
+    "positioning": "Je ne fais pas que coder — j'architecture des systèmes, prends des décisions techniques, dirige des code reviews, écris de la documentation et possède des systèmes de production de bout en bout.",
+    "traits": ["Exécution Rapide", "Propriété Technique", "Forte Autonomie", "Mindset Production", "Conscience Métier"]
+  },
+  "experience": {
+    "section_label": "Expérience",
+    "section_title": "Expérience Professionnelle",
+    "current": "Actuel",
+    "responsibilities": "Responsabilités",
+    "technologies": "Technologies"
+  },
+  "featured": {
+    "section_label": "Projet Phare",
+    "section_title": "Antigravity Sneakers",
+    "section_subtitle": "Une plateforme e-commerce production conçue de zéro",
+    "live_storefront": "Boutique en Direct",
+    "live_admin": "Admin en Direct",
+    "architecture_title": "Architecture Plateforme",
+    "admin_title": "Plateforme d'Administration Avancée",
+    "admin_subtitle": "Les équipes métier contrôlent chaque aspect de la plateforme — aucune intervention développeur requise.",
+    "marketing_title": "Intégrations Marketing & Analytics",
+    "ecommerce_title": "Capacités E-Commerce",
+    "explore_live": "Explorer la Plateforme en Direct"
+  },
+  "case_studies": {
+    "section_label": "Études de Cas",
+    "section_title": "Études de Cas Techniques",
+    "problem": "Problème",
+    "challenges": "Défis",
+    "solution": "Solution",
+    "impact": "Impact",
+    "technologies": "Technologies"
+  },
+  "philosophy": {
+    "section_label": "Philosophie",
+    "section_title": "Philosophie d'Ingénierie"
+  },
+  "engineering": {
+    "section_label": "Ingénierie",
+    "section_title": "Pratiques d'Ingénierie"
+  },
+  "github": {
+    "section_label": "GitHub",
+    "section_title": "Workflow d'Ingénierie",
+    "view_profile": "Voir le Profil GitHub",
+    "practices": [
+      "Gestion de dépôts",
+      "Git Flow & Stratégies de branchement",
+      "Pull Requests & Code Reviews",
+      "Gestion des releases",
+      "Intégration CI/CD",
+      "Collaboration d'ingénierie"
+    ]
+  },
+  "resume": {
+    "section_label": "CV",
+    "section_title": "Télécharger le CV",
+    "section_subtitle": "Tous les CVs générés depuis une source unique de vérité.",
+    "en_title": "CV Anglais",
+    "en_desc": "CV professionnel standard en anglais",
+    "fr_title": "CV Français",
+    "fr_desc": "CV professionnel en français",
+    "executive_title": "CV Exécutif",
+    "executive_desc": "Orienté leadership, pour lecture par CTO et VP",
+    "technical_title": "CV Technique",
+    "technical_desc": "Détail technique approfondi pour équipes d'ingénierie",
+    "download": "Télécharger PDF"
+  },
+  "contact": {
+    "section_label": "Contact",
+    "section_title": "Me Contacter",
+    "subtitle": "Disponible pour postes à temps plein, consulting technique et projets d'architecture.",
+    "email_label": "Email",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "location_label": "Localisation"
+  },
+  "language_selector": {
+    "title": "Mohamed Marwen Maalawi",
+    "subtitle": "Ingénieur Logiciel Full-Stack Senior",
+    "description": "Sélectionnez votre langue préférée pour continuer.",
+    "en_label": "English",
+    "fr_label": "Français",
+    "en_flag": "🇺🇸",
+    "fr_flag": "🇫🇷"
+  },
+  "footer": {
+    "built_with": "Construit avec Next.js · Déployé sur Vercel",
+    "rights": "Tous droits réservés."
+  },
+  "switcher": {
+    "label": "Langue"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Mohamed Marwen Maalawi — Senior Full-Stack Engineer",
+    "description": "Senior Full-Stack Software Engineer specialized in NestJS, Next.js, React Native and Spring Boot. Building production-grade platforms from architecture to deployment.",
+    "og_title": "Mohamed Marwen Maalawi — Senior Full-Stack Engineer",
+    "og_description": "Platform & Product Engineer. NestJS · Next.js · React Native · Spring Boot · DevOps"
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "engineering": "Engineering",
+    "github": "GitHub",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "available": "Available for new opportunities",
+    "role": "Senior Full-Stack Software Engineer",
+    "tagline": "I design, build, deploy and maintain production-grade platforms — from architecture to CI/CD.",
+    "cta_resume": "Download Resume",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch",
+    "scroll": "Scroll to explore"
+  },
+  "about": {
+    "section_label": "About",
+    "positioning_label": "Platform & Product Engineer",
+    "positioning": "I don't just write code — I architect systems, make technical decisions, lead code reviews, write documentation and own production systems end to end.",
+    "traits": ["Fast Execution", "Technical Ownership", "Strong Autonomy", "Production Mindset", "Business Awareness"]
+  },
+  "experience": {
+    "section_label": "Experience",
+    "section_title": "Professional Experience",
+    "current": "Current",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies"
+  },
+  "featured": {
+    "section_label": "Featured Project",
+    "section_title": "Antigravity Sneakers",
+    "section_subtitle": "A production-grade commerce platform built from the ground up",
+    "live_storefront": "Live Storefront",
+    "live_admin": "Live Admin",
+    "architecture_title": "Platform Architecture",
+    "admin_title": "Advanced Administration Platform",
+    "admin_subtitle": "Business teams control every aspect of the platform — zero developer intervention required.",
+    "marketing_title": "Marketing & Analytics Integrations",
+    "ecommerce_title": "E-Commerce Capabilities",
+    "explore_live": "Explore Live Platform"
+  },
+  "case_studies": {
+    "section_label": "Case Studies",
+    "section_title": "Engineering Case Studies",
+    "problem": "Problem",
+    "challenges": "Challenges",
+    "solution": "Solution",
+    "impact": "Impact",
+    "technologies": "Technologies"
+  },
+  "philosophy": {
+    "section_label": "Philosophy",
+    "section_title": "Engineering Philosophy"
+  },
+  "engineering": {
+    "section_label": "Engineering",
+    "section_title": "Engineering Practices"
+  },
+  "github": {
+    "section_label": "GitHub",
+    "section_title": "Engineering Workflow",
+    "view_profile": "View GitHub Profile",
+    "practices": [
+      "Repository Management",
+      "Git Flow & Branching Strategies",
+      "Pull Requests & Code Reviews",
+      "Release Management",
+      "CI/CD Integration",
+      "Engineering Collaboration"
+    ]
+  },
+  "resume": {
+    "section_label": "Resume",
+    "section_title": "Download Resume",
+    "section_subtitle": "All resumes generated from a single source of truth.",
+    "en_title": "English Resume",
+    "en_desc": "Standard professional CV in English",
+    "fr_title": "French Resume",
+    "fr_desc": "CV professionnel en français",
+    "executive_title": "Executive Resume",
+    "executive_desc": "Leadership-focused, for CTO and VP-level review",
+    "technical_title": "Technical Resume",
+    "technical_desc": "Deep technical detail for engineering teams",
+    "download": "Download PDF"
+  },
+  "contact": {
+    "section_label": "Contact",
+    "section_title": "Get in Touch",
+    "subtitle": "Available for full-time roles, technical consulting and architecture projects.",
+    "email_label": "Email",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "location_label": "Location"
+  },
+  "language_selector": {
+    "title": "Mohamed Marwen Maalawi",
+    "subtitle": "Senior Full-Stack Software Engineer",
+    "description": "Select your preferred language to continue.",
+    "en_label": "English",
+    "fr_label": "Français",
+    "en_flag": "🇺🇸",
+    "fr_flag": "🇫🇷"
+  },
+  "footer": {
+    "built_with": "Built with Next.js · Deployed on Vercel",
+    "rights": "All rights reserved."
+  },
+  "switcher": {
+    "label": "Language"
+  }
+}
