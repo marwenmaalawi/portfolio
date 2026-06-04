@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack Senior",
-    "description": "Ingénieur Logiciel Full-Stack Senior spécialisé en NestJS, Next.js, React Native et Spring Boot. Construction de plateformes production de l'architecture au déploiement.",
-    "og_title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack Senior",
+    "title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack",
+    "description": "Ingénieur Logiciel Full-Stack spécialisé en NestJS, Next.js, React Native et Spring Boot. Construction de plateformes production de l'architecture au déploiement.",
+    "og_title": "Mohamed Marwen Maalawi — Ingénieur Full-Stack",
     "og_description": "Ingénieur Plateforme & Produit. NestJS · Next.js · React Native · Spring Boot · DevOps"
   },
   "nav": {
@@ -16,7 +16,7 @@
   },
   "hero": {
     "available": "Disponible pour de nouvelles opportunités",
-    "role": "Ingénieur Logiciel Full-Stack Senior",
+    "role": "Ingénieur Logiciel Full-Stack",
     "tagline": "Je conçois, construis, déploie et maintiens des plateformes production — de l'architecture au CI/CD.",
     "cta_resume": "Télécharger le CV",
     "cta_projects": "Voir les projets",
@@ -104,7 +104,7 @@
   },
   "language_selector": {
     "title": "Mohamed Marwen Maalawi",
-    "subtitle": "Ingénieur Logiciel Full-Stack Senior",
+    "subtitle": "Ingénieur Logiciel Full-Stack",
     "description": "Sélectionnez votre langue préférée pour continuer.",
     "en_label": "English",
     "fr_label": "Français",

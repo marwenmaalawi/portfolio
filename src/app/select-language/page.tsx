@@ -144,7 +144,7 @@ export default function LanguageSelectorPage() {
               marginBottom: "0.5rem",
             }}
           >
-            Senior Full-Stack Software Engineer
+            Full-Stack Software Engineer
           </p>
 
           <div

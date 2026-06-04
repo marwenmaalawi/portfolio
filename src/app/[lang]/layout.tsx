@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       "React Native",
       "Spring Boot",
       "Software Engineer Tunisia",
-      "Senior Developer",
+      "Full-Stack Developer",
     ],
     authors: [{ name: personalInfo.name }],
     creator: personalInfo.name,

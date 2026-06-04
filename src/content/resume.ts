@@ -6,8 +6,8 @@ export const personalInfo = {
   name: "Mohamed Marwen Maalawi",
   nameShort: "Marwen Maalawi",
   title: {
-    en: "Senior Full-Stack Software Engineer",
-    fr: "Ingénieur Logiciel Full-Stack Senior",
+    en: "Full-Stack Software Engineer",
+    fr: "Ingénieur Logiciel Full-Stack",
   },
   location: "Tunis, Tunisia",
   email: "mohamedmarwen.maalawi@gmail.com",
@@ -17,8 +17,8 @@ export const personalInfo = {
 } as const;
 
 export const summary = {
-  en: "Senior Full-Stack Software Engineer specialized in designing, developing and delivering production-grade web, mobile and SaaS applications. Strong expertise in NestJS, Next.js, React Native and Spring Boot. Experienced in scalable platforms, distributed systems, financial integrations, e-commerce solutions, workflow automation and AI-powered features. Worked across the full software lifecycle — from business analysis and architecture to deployment automation and production support. Known for fast execution, technical ownership, strong autonomy and a production mindset.",
-  fr: "Ingénieur Logiciel Full-Stack Senior spécialisé dans la conception, le développement et la livraison d'applications web, mobiles et SaaS de qualité production. Forte expertise en NestJS, Next.js, React Native et Spring Boot. Expérimenté dans les plateformes scalables, les systèmes distribués, les intégrations financières, les solutions e-commerce, l'automatisation des workflows et les fonctionnalités IA. Intervenu sur l'ensemble du cycle logiciel — de l'analyse métier et l'architecture jusqu'au déploiement automatisé et au support production. Reconnu pour l'exécution rapide, la propriété technique et l'autonomie.",
+  en: "Full-Stack Software Engineer specialized in designing, developing and delivering production-grade web, mobile and SaaS applications. Strong expertise in NestJS, Next.js, React Native and Spring Boot. Experienced in scalable platforms, distributed systems, financial integrations, e-commerce solutions, workflow automation and AI-powered features. Worked across the full software lifecycle — from business analysis and architecture to deployment automation and production support. Known for fast execution, technical ownership, strong autonomy and a production mindset.",
+  fr: "Ingénieur Logiciel Full-Stack spécialisé dans la conception, le développement et la livraison d'applications web, mobiles et SaaS de qualité production. Forte expertise en NestJS, Next.js, React Native et Spring Boot. Expérimenté dans les plateformes scalables, les systèmes distribués, les intégrations financières, les solutions e-commerce, l'automatisation des workflows et les fonctionnalités IA. Intervenu sur l'ensemble du cycle logiciel — de l'analyse métier et l'architecture jusqu'au déploiement automatisé et au support production. Reconnu pour l'exécution rapide, la propriété technique et l'autonomie.",
 } as const;
 
 export const spokenLanguages = [
