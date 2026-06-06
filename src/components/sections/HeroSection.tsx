@@ -82,7 +82,7 @@ export default function HeroSection({ lang, t }: SectionProps) {
                 }}
               >
                 <span className="glow-dot" />
-                <span style={{ fontSize: "0.8rem", color: "#15803d", fontWeight: 600 }}>
+                <span style={{ fontSize: "0.8rem", color: "#166534", fontWeight: 600 }}>
                   {hero.available}
                 </span>
               </div>
@@ -184,7 +184,7 @@ export default function HeroSection({ lang, t }: SectionProps) {
               </a>
             </motion.div>
 
-            {/* Location */}
+            {/* Social links: Location, LinkedIn, GitHub */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -197,6 +197,7 @@ export default function HeroSection({ lang, t }: SectionProps) {
                 flexWrap: "wrap",
               }}
             >
+              {/* Location */}
               <div
                 style={{
                   display: "flex",
@@ -211,6 +212,31 @@ export default function HeroSection({ lang, t }: SectionProps) {
                 </svg>
                 {personalInfo.location}
               </div>
+
+              {/* LinkedIn */}
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  color: "var(--text-muted)",
+                  fontSize: "0.8rem",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                LinkedIn
+              </a>
+
+              {/* GitHub */}
               <a
                 href={personalInfo.github}
                 target="_blank"
@@ -260,20 +286,20 @@ export default function HeroSection({ lang, t }: SectionProps) {
             <div
               style={{
                 position: "relative",
-                width: 420,
-                height: 420,
+                width: "clamp(280px, 30vw, 420px)",
+                height: "clamp(280px, 30vw, 420px)",
                 borderRadius: "50%",
                 overflow: "hidden",
                 border: "2px solid rgba(79, 70, 229, 0.2)",
               }}
             >
               <Image
-                src="/avatar.jpg"
+                src="/avatar.png"
                 alt="Mohamed Marwen Maalawi"
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center 8%" }}
                 priority
-                sizes="420px"
+                sizes="(max-width: 1024px) 280px, 420px"
               />
             </div>
           </motion.div>
@@ -311,9 +337,24 @@ export default function HeroSection({ lang, t }: SectionProps) {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .hero-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+        }
         @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-avatar { display: none !important; }
+          .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-avatar {
+            display: flex !important;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            order: -1;
+          }
+          .hero-avatar > div:last-child {
+            width: 140px !important;
+            height: 140px !important;
+          }
+          .hero-avatar > div:first-child {
+            inset: -4px !important;
+          }
         }
       `}</style>
     </section>

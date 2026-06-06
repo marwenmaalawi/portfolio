@@ -66,6 +66,36 @@ export default function Footer({ lang }: FooterProps) {
           </span>
         </div>
 
+        {/* Micro-CTA: availability signal */}
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.35rem 0.875rem",
+            borderRadius: 9999,
+            background: "rgba(16, 185, 129, 0.07)",
+            border: "1px solid rgba(16, 185, 129, 0.18)",
+          }}
+        >
+          <span
+            style={{
+              display: "inline-block",
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              background: "#10b981",
+              boxShadow: "0 0 6px #10b981",
+              animation: "pulse-glow 2s ease-in-out infinite",
+            }}
+          />
+          <span style={{ fontSize: "0.75rem", color: "#166534", fontWeight: 600 }}>
+            {isEn
+              ? "Open to new opportunities · Available for freelance"
+              : "Ouvert aux nouvelles opportunités · Disponible en freelance"}
+          </span>
+        </div>
+
         {/* Links */}
         <div
           style={{
