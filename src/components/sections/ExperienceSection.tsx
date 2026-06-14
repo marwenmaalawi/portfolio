@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import type { SectionProps } from "@/types";
 import { experience } from "@/content/resume";
-
-
+import GlowCard from "@/components/effects/GlowCard";
 
 const typeColors: Record<string, string> = {
   fulltime: "badge-green",
@@ -20,8 +19,9 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
   const exp = t.experience as Record<string, string>;
 
   return (
-    <section id="experience" className="section" style={{ background: "var(--bg-surface)" }}>
-      <div className="container">
+    <section id="experience" className="section aurora-bg">
+      <hr className="section-divider" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,10 +53,16 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
             return (
               <motion.div
                 key={job.id}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.15,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "auto 1fr",
@@ -67,8 +73,12 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
               >
                 {/* Timeline column */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 40 }}>
-                  {/* Dot */}
-                  <div
+                  {/* Animated Dot */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15, delay: i * 0.15 + 0.2 }}
                     style={{
                       width: 40,
                       height: 40,
@@ -84,29 +94,48 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
                       justifyContent: "center",
                       flexShrink: 0,
                       zIndex: 1,
-                      boxShadow: i === 0 ? "0 0 20px rgba(99,102,241,0.4)" : "none",
+                      boxShadow: i === 0 ? "0 0 25px rgba(99,102,241,0.5), 0 0 50px rgba(99,102,241,0.2)" : "none",
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M8 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 6a6 6 0 1 0 0-6 6 6 0 0 0 0 6z" fill={i === 0 ? "white" : "rgba(99,102,241,0.6)"} />
-                    </svg>
-                  </div>
+                    {i === 0 ? (
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M8 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 6a6 6 0 1 0 0-6 6 6 0 0 0 0 6z" fill="white" />
+                        </svg>
+                      </motion.div>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 6a6 6 0 1 0 0-6 6 6 0 0 0 0 6z" fill="rgba(99,102,241,0.6)" />
+                      </svg>
+                    )}
+                  </motion.div>
 
-                  {/* Line */}
+                  {/* Animated Line */}
                   {!isLast && (
-                    <div
+                    <motion.div
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: i * 0.15 + 0.4 }}
                       style={{
                         flex: 1,
                         width: 1,
-                        background: "linear-gradient(to bottom, rgba(99,102,241,0.3), rgba(99,102,241,0.05))",
+                        background: "linear-gradient(to bottom, rgba(99,102,241,0.4), rgba(99,102,241,0.05))",
                         marginTop: 4,
+                        transformOrigin: "top",
                       }}
                     />
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="glass-card" style={{ padding: "1.5rem 1.75rem", marginBottom: 0 }}>
+                <GlowCard
+                  style={{ padding: "1.5rem 1.75rem", marginBottom: 0 }}
+                  glowColor={i === 0 ? "99, 102, 241" : "139, 92, 246"}
+                >
                   {/* Header */}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
                     <div>
@@ -147,10 +176,17 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
                     </p>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                       {[...responsibilities].map((r, ri) => (
-                        <li key={ri} style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.875rem", color: "var(--text-secondary)" }}>
+                        <motion.li
+                          key={ri}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 + ri * 0.05 }}
+                          style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.875rem", color: "var(--text-secondary)" }}
+                        >
                           <span style={{ color: "var(--accent-primary)", marginTop: "0.3rem", flexShrink: 0, fontSize: "0.6rem" }}>◆</span>
                           {r}
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -162,11 +198,17 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
                     </p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
                       {[...job.technologies].map((tech) => (
-                        <span key={tech} className="tech-pill">{tech}</span>
+                        <motion.span
+                          key={tech}
+                          className="tech-pill"
+                          whileHover={{ scale: 1.05, boxShadow: "0 0 12px rgba(99,102,241,0.2)" }}
+                        >
+                          {tech}
+                        </motion.span>
                       ))}
                     </div>
                   </div>
-                </div>
+                </GlowCard>
               </motion.div>
             );
           })}
@@ -175,7 +217,3 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
     </section>
   );
 }
-
-
-
-

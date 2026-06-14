@@ -11,6 +11,7 @@ import EngineeringSection from "@/components/sections/EngineeringSection";
 import GitHubSection from "@/components/sections/GitHubSection";
 import ResumeSection from "@/components/sections/ResumeSection";
 import ContactSection from "@/components/sections/ContactSection";
+import ScrollReveal from "@/components/effects/ScrollReveal";
 
 type Params = Promise<{ lang: string }>;
 
@@ -24,15 +25,33 @@ export default async function PortfolioPage({ params }: { params: Params }) {
   return (
     <>
       <HeroSection lang={typedLang} t={t} />
-      <AboutSection lang={typedLang} t={t} />
-      <ExperienceSection lang={typedLang} t={t} />
-      <FeaturedProjectSection lang={typedLang} t={t} />
-      <CaseStudiesSection lang={typedLang} t={t} />
-      <PhilosophySection lang={typedLang} t={t} />
-      <EngineeringSection lang={typedLang} t={t} />
-      <GitHubSection lang={typedLang} t={t} />
-      <ResumeSection lang={typedLang} t={t} />
-      <ContactSection lang={typedLang} t={t} />
+      <ScrollReveal>
+        <AboutSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ExperienceSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FeaturedProjectSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CaseStudiesSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <PhilosophySection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <EngineeringSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <GitHubSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ResumeSection lang={typedLang} t={t} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ContactSection lang={typedLang} t={t} />
+      </ScrollReveal>
     </>
   );
 }

@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Mohamed Marwen Maalawi",
-  description: "Senior Full-Stack Software Engineer",
-};
+import "../app/globals.css";
 
 export default function RootLayout({
   children,
@@ -12,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -23,6 +17,20 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
+        />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const saved = localStorage.getItem('theme');
+                  const theme = saved || 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {}
+              })()
+            `,
+          }}
         />
       </head>
       <body>{children}</body>

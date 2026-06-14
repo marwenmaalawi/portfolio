@@ -6,8 +6,8 @@ export const personalInfo = {
   name: "Mohamed Marwen Maalawi",
   nameShort: "Marwen Maalawi",
   title: {
-    en: "Full-Stack Software Engineer",
-    fr: "Ingénieur Logiciel Full-Stack",
+    en: "Senior Full-Stack Software Engineer",
+    fr: "Ingénieur Logiciel Senior Full-Stack",
   },
   location: "Tunis, Tunisia",
   email: "mohamedmarwen.maalawi@gmail.com",
@@ -17,8 +17,8 @@ export const personalInfo = {
 } as const;
 
 export const summary = {
-  en: "Full-Stack Software Engineer specialized in designing, developing and delivering production-grade web, mobile and SaaS applications. Strong expertise in NestJS, Next.js, React Native and Spring Boot. Experienced in scalable platforms, distributed systems, financial integrations, e-commerce solutions, workflow automation and AI-powered features. Worked across the full software lifecycle — from business analysis and architecture to deployment automation and production support. Known for fast execution, technical ownership, strong autonomy and a production mindset.",
-  fr: "Ingénieur Logiciel Full-Stack spécialisé dans la conception, le développement et la livraison d'applications web, mobiles et SaaS de qualité production. Forte expertise en NestJS, Next.js, React Native et Spring Boot. Expérimenté dans les plateformes scalables, les systèmes distribués, les intégrations financières, les solutions e-commerce, l'automatisation des workflows et les fonctionnalités IA. Intervenu sur l'ensemble du cycle logiciel — de l'analyse métier et l'architecture jusqu'au déploiement automatisé et au support production. Reconnu pour l'exécution rapide, la propriété technique et l'autonomie.",
+  en: "Senior Full-Stack Software Engineer with a track record of architecting, building and shipping production-grade platforms from zero to scale. I own the full technical lifecycle — from system design and data modeling through API architecture, CI/CD pipelines and production monitoring. Core expertise in NestJS, Spring Boot, Next.js and React Native. Proven ability to lead technical decisions on distributed systems, financial integrations (Stripe, QuickBooks), workflow engines (Camunda BPM) and AI-powered features. I build systems designed to scale without architectural rewrites, and I deliver with full autonomy in fast-paced, international engineering teams.",
+  fr: "Ingénieur Logiciel Senior Full-Stack avec un historique prouvé dans l'architecture, la construction et la mise en production de plateformes de qualité industrielle, de zéro à l'échelle. Je prends en charge l'ensemble du cycle technique — de la conception système et la modélisation de données à l'architecture d'API, les pipelines CI/CD et le monitoring de production. Expertise principale en NestJS, Spring Boot, Next.js et React Native. Capacité démontrée à piloter les décisions techniques sur les systèmes distribués, les intégrations financières (Stripe, QuickBooks), les moteurs de workflows (Camunda BPM) et les fonctionnalités IA. Je conçois des systèmes pensés pour scaler sans réécriture architecturale, avec une autonomie totale au sein d'équipes d'ingénierie internationales.",
 } as const;
 
 export const spokenLanguages = [
@@ -28,12 +28,12 @@ export const spokenLanguages = [
 ] as const;
 
 export const specializations = [
+  "System Architecture",
   "NestJS",
+  "Spring Boot",
   "Next.js",
   "React Native",
-  "Spring Boot",
-  "DevOps",
-  "SaaS Platforms",
+  "Platform Engineering",
   "Distributed Systems",
 ] as const;
 
@@ -46,20 +46,20 @@ export const experience = [
     type: "fulltime" as const,
     responsibilities: {
       en: [
-        "Design and development of Spring Boot microservices for distributed architectures",
-        "Implementation of Camunda BPM workflows for complex business process automation",
-        "GraalVM integration for high-performance script execution systems",
-        "Performance optimization and error recovery mechanisms in production environments",
-        "Keycloak integration for enterprise-grade RBAC, SSO and identity management",
-        "Architecture discussions and technical decision-making for production systems",
+        "Architected and implemented Spring Boot microservices handling distributed business workflows with fault-tolerant inter-service communication",
+        "Designed and deployed Camunda BPM process definitions for multi-step business automation, reducing manual coordination overhead by an order of magnitude",
+        "Engineered a GraalVM-based polyglot script execution sandbox, enabling dynamic runtime script evaluation within workflow tasks without JVM restarts",
+        "Built production-hardened error recovery mechanisms — circuit breakers, retry policies and dead-letter queues — ensuring zero silent failures in critical business flows",
+        "Integrated Keycloak for enterprise-grade identity management: RBAC, SSO, token-based auth and fine-grained permission policies across all services",
+        "Led architecture discussions and drove technical decision-making for distributed system design, defining service boundaries, data ownership and API contracts",
       ],
       fr: [
-        "Conception et développement de microservices Spring Boot pour architectures distribuées",
-        "Implémentation de workflows Camunda BPM pour l'automatisation de processus métier complexes",
-        "Intégration GraalVM pour des systèmes d'exécution de scripts haute performance",
-        "Optimisation des performances et mécanismes de récupération d'erreurs en production",
-        "Intégration Keycloak pour RBAC, SSO et gestion d'identité niveau entreprise",
-        "Discussions d'architecture et prise de décision technique pour les systèmes de production",
+        "Architecture et implémentation de microservices Spring Boot gérant des workflows métier distribués avec communication inter-services tolérante aux pannes",
+        "Conception et déploiement de définitions de processus Camunda BPM pour l'automatisation métier multi-étapes, réduisant drastiquement la coordination manuelle",
+        "Ingénierie d'un sandbox d'exécution de scripts polyglotte basé sur GraalVM, permettant l'évaluation dynamique de scripts dans les tâches de workflow sans redémarrage JVM",
+        "Construction de mécanismes de récupération d'erreurs production — circuit breakers, politiques de retry et dead-letter queues — garantissant zéro défaillance silencieuse",
+        "Intégration Keycloak pour la gestion d'identité entreprise : RBAC, SSO, authentification par tokens et politiques de permissions granulaires sur tous les services",
+        "Pilotage des discussions d'architecture et prise de décision technique pour la conception de systèmes distribués, définition des frontières de services et contrats d'API",
       ],
     },
     technologies: [
@@ -80,22 +80,22 @@ export const experience = [
     type: "fulltime" as const,
     responsibilities: {
       en: [
-        "Development of SaaS platforms and mobile applications serving international clients",
-        "Real-time communication systems, chat systems and push notification infrastructure",
-        "Stripe payment integrations including subscriptions, webhooks and billing management",
-        "QuickBooks financial synchronization and accounting data integration",
-        "AI feature integrations for enhanced product capabilities",
-        "CI/CD pipeline improvements and deployment automation",
-        "International remote collaboration across distributed engineering teams",
+        "Owned the full-stack architecture of multiple SaaS products and React Native mobile applications serving international B2B clients across North America",
+        "Designed and built real-time communication infrastructure — WebSocket-based chat, presence systems and cross-platform push notification pipelines via Firebase and APNs",
+        "Architected a comprehensive Stripe integration: subscription lifecycle management, idempotent webhook processing, automated dunning flows, billing portal and complete audit logging — zero billing incidents post-launch",
+        "Engineered a bi-directional QuickBooks sync engine with conflict resolution, exponential backoff retry, dead-letter queues and automated reconciliation — eliminating 100% of manual accounting effort",
+        "Designed clean AI integration layers with provider abstraction, streaming response support, per-tenant cost tracking and graceful fallback chains — enabling rapid model switching without code changes",
+        "Established CI/CD pipelines with GitHub Actions — automated testing, linting, staging deployments and production release gates, reducing deployment time from hours to minutes",
+        "Operated as a key technical decision-maker in an international remote team, independently owning features from RFC through production deployment and monitoring",
       ],
       fr: [
-        "Développement de plateformes SaaS et applications mobiles pour clients internationaux",
-        "Systèmes de communication temps réel, systèmes de chat et infrastructure de notifications push",
-        "Intégrations Stripe avec abonnements, webhooks et gestion de facturation",
-        "Synchronisation financière QuickBooks et intégration de données comptables",
-        "Intégrations de fonctionnalités IA pour des capacités produit avancées",
-        "Améliorations des pipelines CI/CD et automatisation du déploiement",
-        "Collaboration internationale à distance au sein d'équipes d'ingénierie distribuées",
+        "Propriété complète de l'architecture full-stack de plusieurs produits SaaS et applications mobiles React Native pour des clients B2B internationaux en Amérique du Nord",
+        "Conception et construction d'une infrastructure de communication temps réel — chat basé sur WebSocket, systèmes de présence et pipelines de notifications push cross-platform via Firebase et APNs",
+        "Architecture d'une intégration Stripe complète : gestion du cycle de vie des abonnements, traitement idempotent des webhooks, flux de relance automatisés, portail de facturation et journalisation d'audit complète — zéro incident de facturation après lancement",
+        "Ingénierie d'un moteur de synchronisation bidirectionnel QuickBooks avec résolution de conflits, retry exponentiel, dead-letter queues et réconciliation automatisée — éliminant 100% de l'effort comptable manuel",
+        "Conception de couches d'intégration IA propres avec abstraction de fournisseur, support streaming, suivi des coûts par tenant et chaînes de fallback — permettant le changement de modèle sans modification de code",
+        "Mise en place de pipelines CI/CD avec GitHub Actions — tests automatisés, linting, déploiements staging et gates de release production, réduisant le temps de déploiement de plusieurs heures à quelques minutes",
+        "Opéré en tant que décideur technique clé dans une équipe internationale remote, propriétaire indépendant des features du RFC au déploiement production et monitoring",
       ],
     },
     technologies: [
@@ -111,28 +111,26 @@ export const experience = [
   },
   {
     id: "freelance",
-    company: { en: "Freelance", fr: "Freelance" },
-    role: { en: "Full-Stack Software Engineer", fr: "Ingénieur Logiciel Full-Stack" },
+    company: { en: "Independent Consulting", fr: "Consulting Indépendant" },
+    role: { en: "Technical Lead & Full-Stack Architect", fr: "Lead Technique & Architecte Full-Stack" },
     period: { en: "2024 – Present", fr: "2024 – Présent" },
     type: "freelance" as const,
     responsibilities: {
       en: [
-        "End-to-end product development for clients across multiple industries",
-        "NestJS backend architectures with PostgreSQL and scalable API design",
-        "Next.js and React frontend applications with modern UX standards",
-        "React Native mobile applications for iOS and Android",
-        "Docker containerization and production deployment strategies",
-        "CI/CD pipeline setup and automation",
-        "Technical and architecture consulting for product teams",
+        "Led end-to-end product architecture and development for clients in e-commerce, logistics and fintech — from initial technical scoping to production launch",
+        "Designed NestJS backend architectures with PostgreSQL, implementing domain-driven design, modular service boundaries and scalable REST/GraphQL API layers",
+        "Built production Next.js frontends with ISR, server components, optimized Core Web Vitals and comprehensive SEO strategies",
+        "Delivered cross-platform React Native mobile applications with offline-first architecture, push notifications and native module integration",
+        "Established containerized deployment pipelines with Docker Compose, multi-stage builds and environment-specific configuration management",
+        "Provided technical consulting and architecture reviews for product teams — database schema design, API contract definition and technology selection",
       ],
       fr: [
-        "Développement produit de bout en bout pour clients multi-secteurs",
-        "Architectures backend NestJS avec PostgreSQL et design d'API scalable",
-        "Applications frontend Next.js et React avec standards UX modernes",
-        "Applications mobiles React Native pour iOS et Android",
-        "Conteneurisation Docker et stratégies de déploiement production",
-        "Mise en place et automatisation de pipelines CI/CD",
-        "Consulting technique et architectural pour les équipes produit",
+        "Pilotage de l'architecture produit et du développement de bout en bout pour des clients en e-commerce, logistique et fintech — du cadrage technique au lancement en production",
+        "Conception d'architectures backend NestJS avec PostgreSQL, implémentation de domain-driven design, frontières de services modulaires et couches d'API REST/GraphQL scalables",
+        "Construction de frontends Next.js production avec ISR, server components, Core Web Vitals optimisés et stratégies SEO complètes",
+        "Livraison d'applications mobiles React Native cross-platform avec architecture offline-first, notifications push et intégration de modules natifs",
+        "Mise en place de pipelines de déploiement conteneurisés avec Docker Compose, builds multi-stage et gestion de configuration par environnement",
+        "Consulting technique et revues d'architecture pour les équipes produit — conception de schémas BDD, définition de contrats d'API et sélection technologique",
       ],
     },
     technologies: ["NestJS", "Next.js", "React", "React Native", "PostgreSQL", "Docker", "TypeScript"],

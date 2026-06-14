@@ -5,6 +5,82 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Lang } from "@/lib/utils";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTheme } from "@/features/theme/ThemeContext";
+import Magnetic from "@/components/effects/Magnetic";
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <motion.button
+      onClick={toggleTheme}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label="Toggle theme"
+      style={{
+        background: "rgba(255, 255, 255, 0.05)",
+        border: "1px solid var(--bg-border)",
+        color: "var(--text-primary)",
+        padding: "0.5rem",
+        borderRadius: "8px",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 34,
+        height: 34,
+      }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {theme === "light" ? (
+          <motion.svg
+            key="moon"
+            initial={{ rotate: -45, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 45, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </motion.svg>
+        ) : (
+          <motion.svg
+            key="sun"
+            initial={{ rotate: 45, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: -45, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </motion.svg>
+        )}
+      </AnimatePresence>
+    </motion.button>
+  );
+}
 
 interface HeaderProps {
   lang: Lang;
@@ -32,14 +108,43 @@ const navItems = {
 export default function Header({ lang }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+  const [activeSection, setActiveSection] = useState("");
 
   const items = navItems[lang];
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+
+          // Determine active section based on scroll position
+          const sections = items.map(item => item.href.substring(1));
+          let current = "";
+          
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              // If the section top is above the middle of the screen
+              if (rect.top <= window.innerHeight / 3) {
+                current = section;
+              }
+            }
+          }
+          setActiveSection(current || sections[0]);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [items]);
 
   return (
     <header
@@ -56,7 +161,8 @@ export default function Header({ lang }: HeaderProps) {
         background: scrolled
           ? "var(--bg-header)"
           : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
+        backdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "none",
       }}
     >
       <div
@@ -79,6 +185,7 @@ export default function Header({ lang }: HeaderProps) {
           }}
         >
           <div
+            className="breathing-glow"
             style={{
               width: 32,
               height: 32,
@@ -116,35 +223,42 @@ export default function Header({ lang }: HeaderProps) {
           }}
           className="desktop-nav"
         >
-          {items.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              style={{
-                padding: "0.375rem 0.75rem",
-                borderRadius: 8,
-                fontSize: "0.825rem",
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                textDecoration: "none",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "var(--text-primary)";
-                (e.target as HTMLElement).style.background = "var(--bg-card)";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "var(--text-secondary)";
-                (e.target as HTMLElement).style.background = "transparent";
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
+          {items.map((item) => {
+            const isActive = activeSection === item.href.substring(1);
+            return (
+              <Magnetic key={item.href}>
+                <a
+                  href={item.href}
+                  className="nav-link"
+                  style={{
+                    position: "relative",
+                    color: isActive ? "var(--text-primary)" : "var(--text-secondary)",
+                    fontWeight: isActive ? 600 : 500,
+                  }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavPill"
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "var(--bg-border)",
+                        borderRadius: "8px",
+                        zIndex: -1,
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {item.label}
+                </a>
+              </Magnetic>
+            );
+          })}
         </nav>
 
         {/* Right actions */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <ThemeToggle />
           <LanguageSwitcher currentLang={lang} />
           <a
             href="#resume"
@@ -161,7 +275,7 @@ export default function Header({ lang }: HeaderProps) {
               display: "none",
               padding: "0.5rem",
               borderRadius: 8,
-              background: "var(--bg-card)",
+              background: "rgba(255,255,255,0.05)",
               border: "1px solid var(--bg-border)",
               color: "var(--text-primary)",
               cursor: "pointer",
@@ -198,6 +312,7 @@ export default function Header({ lang }: HeaderProps) {
               background: "var(--bg-surface)",
               borderBottom: "1px solid var(--bg-border)",
               overflow: "hidden",
+              backdropFilter: "blur(20px)",
             }}
           >
             <div
@@ -221,6 +336,7 @@ export default function Header({ lang }: HeaderProps) {
                     color: "var(--text-secondary)",
                     textDecoration: "none",
                     display: "block",
+                    transition: "all 0.2s",
                   }}
                 >
                   {item.label}

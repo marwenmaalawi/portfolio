@@ -5,6 +5,9 @@ import { getTranslations } from "@/lib/i18n";
 import { personalInfo } from "@/content/resume";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { ThemeProvider } from "@/features/theme/ThemeContext";
+import CustomCursor from "@/components/effects/CustomCursor";
+import SetLang from "@/components/effects/SetLang";
 
 type Params = Promise<{ lang: string }>;
 
@@ -75,20 +78,13 @@ export default async function LangLayout({
   if (!isValidLang(lang)) notFound();
 
   return (
-    <html lang={lang}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
-        <Header lang={lang} />
-        <main>{children}</main>
-        <Footer lang={lang} />
-      </body>
-    </html>
+    <ThemeProvider>
+      <SetLang lang={lang} />
+      <CustomCursor />
+      <Header lang={lang} />
+      <main>{children}</main>
+      <Footer lang={lang} />
+    </ThemeProvider>
   );
 }
+

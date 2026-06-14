@@ -183,7 +183,7 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
   const summaryContent = lang === "fr" ? summary.fr : summary.en;
   drawSectionHeader(summaryTitle);
 
-  const summaryY = doc.y;
+  const summaryY_initial = doc.y;
   const summaryWidth = 507; // 555 - 48
 
   doc.font(getFont("regular")).fontSize(10.5).lineGap(2.5);
@@ -191,6 +191,11 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     width: summaryWidth,
     align: "justify"
   });
+
+  if (summaryY_initial + summaryHeight > 780) {
+    doc.addPage();
+  }
+  const summaryY = doc.y;
 
   // Draw left border accent line
   doc.save();
@@ -201,16 +206,19 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     .stroke();
   doc.restore();
 
-  // Print text
+  // Print text without absolute Y to allow natural flow if needed
+  doc.x = 48;
+  doc.y = summaryY;
   doc
     .fillColor(textColor)
-    .text(summaryContent, 48, summaryY, {
+    .text(summaryContent, {
       width: summaryWidth,
       align: "justify",
       lineGap: 2.5
     });
 
-  doc.y = summaryY + summaryHeight + 12;
+  doc.y += 12;
+  doc.x = 40;
 
   // 2. Experience Section
   const expTitle = lang === "fr" ? "Expérience Professionnelle" : "Professional Experience";
@@ -220,6 +228,20 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     // Executive CV filters out Freelance
     if (type === "executive" && job.id === "freelance") {
       return;
+    }
+
+    const points = lang === "fr" ? job.responsibilities.fr : job.responsibilities.en;
+    const displayPoints = type !== "general" ? points.slice(0, 4) : points;
+
+    // Pre-calculate height of this job block
+    let jobHeight = 31 + 25; // header + tech spacing
+    doc.font(getFont("regular")).fontSize(10.5);
+    displayPoints.forEach((point) => {
+      jobHeight += doc.heightOfString(point, { width: 503, lineGap: 1.5 }) + 2;
+    });
+
+    if (doc.y + jobHeight > 790) {
+      doc.addPage();
     }
 
     const jobStartY = doc.y;
@@ -252,16 +274,16 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     doc.y = jobStartY + 31;
 
     // Bullet points (10.5pt, spacious lineGap)
-    const points = lang === "fr" ? job.responsibilities.fr : job.responsibilities.en;
-    const displayPoints = type !== "general" ? points.slice(0, 4) : points;
 
     displayPoints.forEach((point) => {
+      const pointY = doc.y;
       doc
         .font(getFont("regular"))
         .fontSize(10.5)
         .fillColor(textColor)
-        .text("•  ", 45, doc.y, { continued: true })
-        .text(point, 52, doc.y, { lineGap: 1.5, width: 503 });
+        .text("•  ", 45, pointY, { continued: false });
+      
+      doc.text(point, 52, pointY, { lineGap: 1.5, width: 503 });
     });
 
     // Inline technologies list

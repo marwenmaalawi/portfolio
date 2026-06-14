@@ -1,21 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import type { SectionProps } from "@/types";
 import { summary, spokenLanguages, personalInfo } from "@/content/resume";
-
-
+import GlowCard from "@/components/effects/GlowCard";
 
 const traits = {
   en: ["Fast Execution", "Technical Ownership", "Strong Autonomy", "Production Mindset", "Business Awareness"],
   fr: ["Exécution Rapide", "Propriété Technique", "Forte Autonomie", "Mindset Production", "Conscience Métier"],
 };
 
+/* ─── Animated Counter ─── */
+function AnimatedStat({ value, label }: { value: string; label: string }) {
+  const isNumber = /^\d+/.test(value);
+  const numericPart = parseInt(value) || 0;
+  const suffix = value.replace(/^\d+/, "");
+
+  return (
+    <motion.div
+      className="stat-card"
+      whileHover={{ scale: 1.03, borderColor: "rgba(99,102,241,0.3)" }}
+    >
+      <div style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "0.25rem" }} className="gradient-text">
+        {isNumber ? (
+          <Counter target={numericPart} suffix={suffix} />
+        ) : (
+          value
+        )}
+      </div>
+      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
+        {label}
+      </div>
+    </motion.div>
+  );
+}
+
+function Counter({ target, suffix }: { target: number; suffix: string }) {
+  const count = useMotionValue(0);
+  const springCount = useSpring(count, { stiffness: 50, damping: 20 });
+  const display = useTransform(springCount, (v) => `${Math.round(v)}${suffix}`);
+
+  return (
+    <motion.span
+      onViewportEnter={() => count.set(target)}
+      viewport={{ once: true }}
+    >
+      <motion.span>{display}</motion.span>
+    </motion.span>
+  );
+}
+
 export default function AboutSection({ lang, t }: SectionProps) {
   const about = t.about as Record<string, string | string[]>;
 
   return (
-    <section id="about" className="section">
+    <section id="about" className="section" style={{ background: "var(--bg-surface)" }}>
+      <hr className="section-divider" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }} className="about-grid">
           {/* Left */}
@@ -51,10 +91,18 @@ export default function AboutSection({ lang, t }: SectionProps) {
 
             {/* Trait pills */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
-              {traits[lang].map((trait) => (
-                <span key={trait} className="badge">
+              {traits[lang].map((trait, i) => (
+                <motion.span
+                  key={trait}
+                  className="badge"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ scale: 1.05 }}
+                >
                   {trait}
-                </span>
+                </motion.span>
               ))}
             </div>
 
@@ -62,17 +110,14 @@ export default function AboutSection({ lang, t }: SectionProps) {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               <a
                 href={`mailto:${personalInfo.email}`}
+                className="nav-link"
                 style={{
                   display: "flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  color: "var(--text-muted)",
+                  padding: 0,
                   fontSize: "0.875rem",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--accent-secondary)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M2 4l6 5 6-5M2 4h12v8H2V4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -97,17 +142,17 @@ export default function AboutSection({ lang, t }: SectionProps) {
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             {/* Positioning card */}
-            <div className="glass-card-accent" style={{ padding: "1.5rem" }}>
+            <GlowCard style={{ padding: "1.5rem" }} glowColor="99, 102, 241">
               <div style={{ fontSize: "0.75rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 {lang === "en" ? "Core Positioning" : "Positionnement"}
               </div>
-              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
                 {String(about.positioning)}
               </p>
-            </div>
+            </GlowCard>
 
             {/* Languages */}
-            <div className="glass-card" style={{ padding: "1.5rem" }}>
+            <GlowCard style={{ padding: "1.5rem" }} glowColor="6, 182, 212">
               <div style={{ fontSize: "0.75rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 {lang === "en" ? "Languages" : "Langues"}
               </div>
@@ -123,7 +168,7 @@ export default function AboutSection({ lang, t }: SectionProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </GlowCard>
 
             {/* Quick stats */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
@@ -133,14 +178,7 @@ export default function AboutSection({ lang, t }: SectionProps) {
                 { label: lang === "en" ? "Tech Stack" : "Stack Technique", value: "15+" },
                 { label: lang === "en" ? "Team Collaboration" : "Collaboration Équipe", value: "✓" },
               ].map((stat) => (
-                <div key={stat.label} className="stat-card">
-                  <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "0.25rem" }} className="gradient-text">
-                    {stat.value}
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>
-                    {stat.label}
-                  </div>
-                </div>
+                <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
               ))}
             </div>
           </motion.div>
@@ -155,7 +193,3 @@ export default function AboutSection({ lang, t }: SectionProps) {
     </section>
   );
 }
-
-
-
-
