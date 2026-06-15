@@ -107,31 +107,44 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
   };
 
   // --- HEADER SECTION ---
-  // Left Name & Title
+  doc.y = 35;
+
+  // Centered Name
   doc
     .font(getFont("bold"))
-    .fontSize(23)
+    .fontSize(24)
     .fillColor(secondaryColor)
-    .text(personalInfo.name, 40, 30);
+    .text(personalInfo.name.toUpperCase(), 40, doc.y, { align: "center", width: 515, characterSpacing: 1 });
 
+  doc.y += 4;
+
+  // Centered Title
   const titleText = lang === "fr" ? personalInfo.title.fr : personalInfo.title.en;
   doc
     .font(getFont("medium"))
     .fontSize(12.5)
     .fillColor(primaryColor)
-    .text(titleText, 40, 58);
+    .text(titleText, 40, doc.y, { align: "center", width: 515 });
 
-  // Contact details row
-  const contactText = `${personalInfo.email}   \u2022   ${personalInfo.location}   \u2022   github.com/${personalInfo.githubUsername}   \u2022   linkedin.com/in/mohamed-marwen-maalawi`;
+  doc.y += 12;
+
+  // Contact details (split into clear centered lines)
+  const contactLine1 = `${personalInfo.email}    \u2022    ${personalInfo.location}`;
+  const contactLine2 = `github.com/${personalInfo.githubUsername}    \u2022    linkedin.com/in/${personalInfo.githubUsername}`;
   
   doc
     .font(getFont("regular"))
-    .fontSize(9)
+    .fontSize(9.5)
     .fillColor(mutedColor)
-    .text(contactText, 40, 76);
+    .text(contactLine1, 40, doc.y, { align: "center", width: 515 });
+    
+  doc.y += 4;
+  
+  doc.text(contactLine2, 40, doc.y, { align: "center", width: 515 });
+
+  doc.y += 16;
 
   // Header Divider
-  doc.y = 92;
   doc
     .strokeColor(lineColor)
     .lineWidth(0.5)
@@ -139,7 +152,7 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     .lineTo(555, doc.y)
     .stroke();
 
-  doc.y = 100;
+  doc.y += 12;
 
   // Custom Section Header with left-accent bar
   let isFirstSection = true;
@@ -184,9 +197,9 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
   drawSectionHeader(summaryTitle);
 
   const summaryY_initial = doc.y;
-  const summaryWidth = 507; // 555 - 48
+  const summaryWidth = 495; // 555 - 60
 
-  doc.font(getFont("regular")).fontSize(10.5).lineGap(2.5);
+  doc.font(getFont("regular")).fontSize(10.5).lineGap(3);
   const summaryHeight = doc.heightOfString(summaryContent, {
     width: summaryWidth,
     align: "justify"
@@ -200,14 +213,14 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
   // Draw left border accent line
   doc.save();
   doc.strokeColor(primaryColor)
-    .lineWidth(1.5)
+    .lineWidth(2)
     .moveTo(40, summaryY + 2)
     .lineTo(40, summaryY + summaryHeight - 2)
     .stroke();
   doc.restore();
 
   // Print text without absolute Y to allow natural flow if needed
-  doc.x = 48;
+  doc.x = 55;
   doc.y = summaryY;
   doc
     .fillColor(textColor)
@@ -237,10 +250,10 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
     let jobHeight = 31 + 25; // header + tech spacing
     doc.font(getFont("regular")).fontSize(10.5);
     displayPoints.forEach((point) => {
-      jobHeight += doc.heightOfString(point, { width: 503, lineGap: 1.5 }) + 2;
+      jobHeight += doc.heightOfString(point, { width: 503, lineGap: 1.5, align: "justify" }) + 2;
     });
 
-    if (doc.y + jobHeight > 790) {
+    if (doc.y + jobHeight > 815) {
       doc.addPage();
     }
 
@@ -283,7 +296,7 @@ function generatePDF(lang: "en" | "fr", type: "general" | "executive" | "technic
         .fillColor(textColor)
         .text("•  ", 45, pointY, { continued: false });
       
-      doc.text(point, 52, pointY, { lineGap: 1.5, width: 503 });
+      doc.text(point, 52, pointY, { lineGap: 1.5, width: 503, align: "justify" });
     });
 
     // Inline technologies list

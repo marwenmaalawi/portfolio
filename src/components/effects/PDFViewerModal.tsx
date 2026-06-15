@@ -129,15 +129,22 @@ export default function PDFViewerModal({ isOpen, onClose, pdfUrl, title }: PDFVi
 
             {/* Iframe Content */}
             <div style={{ flex: 1, background: "#f3f4f6", position: "relative" }}>
-              <iframe
-                src={`${pdfUrl}#toolbar=0`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                title={title}
-              />
+              <object
+                data={`${pdfUrl}#view=FitH&toolbar=0`}
+                type="application/pdf"
+                width="100%"
+                height="100%"
+                style={{ border: "none" }}
+              >
+                <div style={{ padding: "2rem", textAlign: "center", color: "var(--text-secondary)" }}>
+                  <p>Aperçu non disponible sur ce navigateur mobile.</p>
+                  <p style={{ marginTop: "0.5rem" }}>
+                    <a href={pdfUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-primary)", textDecoration: "underline" }}>
+                      Cliquez ici pour l'ouvrir
+                    </a>
+                  </p>
+                </div>
+              </object>
             </div>
           </motion.div>
         </div>

@@ -17,7 +17,7 @@
   "hero": {
     "available": "Disponible pour de nouvelles opportunités",
     "role": "Ingénieur Logiciel Full-Stack",
-    "tagline": "Je conçois, construis, déploie et maintiens des plateformes production — de l'architecture au CI/CD.",
+    "tagline": "Je conçois, développe, déploie et maintiens des plateformes robustes — de l'architecture au CI/CD.",
     "cta_resume": "Télécharger le CV",
     "cta_projects": "Voir les projets",
     "cta_contact": "Me contacter",
@@ -26,8 +26,8 @@
   "about": {
     "section_label": "À propos",
     "positioning_label": "Ingénieur Plateforme & Produit",
-    "positioning": "Je ne fais pas que coder — j'architecture des systèmes, prends des décisions techniques, dirige des code reviews, écris de la documentation et possède des systèmes de production de bout en bout.",
-    "traits": ["Exécution Rapide", "Propriété Technique", "Forte Autonomie", "Mindset Production", "Conscience Métier"]
+    "positioning": "Je ne fais pas que coder — j'architecture des systèmes complexes, prends des décisions techniques clés, anime des revues de code, et je suis responsable de bout en bout des systèmes en production.",
+    "traits": ["Exécution Rapide", "Leadership Technique", "Forte Autonomie", "Mindset Production", "Conscience Métier"]
   },
   "experience": {
     "section_label": "Expérience",
@@ -39,7 +39,7 @@
   "featured": {
     "section_label": "Projet Phare",
     "section_title": "Antigravity Sneakers",
-    "section_subtitle": "Une plateforme e-commerce production conçue de zéro",
+    "section_subtitle": "Une plateforme e-commerce prête pour la production, conçue de A à Z",
     "live_storefront": "Boutique en Direct",
     "live_admin": "Admin en Direct",
     "architecture_title": "Architecture Plateforme",
@@ -82,7 +82,7 @@
   "resume": {
     "section_label": "CV",
     "section_title": "Télécharger le CV",
-    "section_subtitle": "Tous les CVs générés depuis une source unique de vérité.",
+    "section_subtitle": "Plusieurs formats générés automatiquement pour s'adapter à votre contexte.",
     "en_title": "CV Anglais",
     "en_desc": "CV professionnel standard en anglais",
     "fr_title": "CV Français",

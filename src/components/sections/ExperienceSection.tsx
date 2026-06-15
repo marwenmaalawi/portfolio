@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { SectionProps } from "@/types";
 import { experience } from "@/content/resume";
 import GlowCard from "@/components/effects/GlowCard";
@@ -190,6 +191,38 @@ export default function ExperienceSection({ lang, t }: SectionProps) {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Savy Mobile App Showcase */}
+                  {job.id === "savy" && (
+                    <div style={{ marginBottom: "1.5rem" }}>
+                      <p style={{ fontSize: "0.75rem", color: "var(--accent-primary)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <span className="glow-dot" style={{ background: "var(--accent-secondary)", width: 6, height: 6 }} />
+                        {lang === "en" ? "Production UI Showcase" : "Aperçu de Production (UI)"}
+                      </p>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 250px), 1fr))", gap: "1.5rem" }}>
+                          <motion.div whileHover={{ scale: 1.02 }} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                            <div style={{ position: "relative", aspectRatio: "9/19", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 10px 30px rgba(0,0,0,0.15)", background: "var(--bg-base)" }}>
+                              <Image src="/projects/savy-1.png" alt="Savy Tax Dashboard" fill style={{ objectFit: "cover" }} />
+                            </div>
+                            <div style={{ textAlign: "center", fontSize: "0.8rem", color: "var(--text-secondary)", fontWeight: 600 }}>Tax Recovery Dashboard</div>
+                          </motion.div>
+                          
+                          <motion.div whileHover={{ scale: 1.02 }} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                            <div style={{ position: "relative", aspectRatio: "9/19", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 10px 30px rgba(0,0,0,0.15)", background: "var(--bg-base)" }}>
+                              <Image src="/projects/savy-2.png" alt="Savy OCR Scanner" fill style={{ objectFit: "cover" }} />
+                            </div>
+                            <div style={{ textAlign: "center", fontSize: "0.8rem", color: "var(--text-secondary)", fontWeight: 600 }}>OCR Receipt Scanner</div>
+                          </motion.div>
+
+                          <motion.div whileHover={{ scale: 1.02 }} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                            <div style={{ position: "relative", aspectRatio: "9/19", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 10px 30px rgba(0,0,0,0.15)", background: "var(--bg-base)" }}>
+                              <Image src="/projects/savy-3.png" alt="Savy HMRC Submission" fill style={{ objectFit: "cover" }} />
+                            </div>
+                            <div style={{ textAlign: "center", fontSize: "0.8rem", color: "var(--text-secondary)", fontWeight: 600 }}>HMRC Self-Assessment</div>
+                          </motion.div>
+                        </div>
+                    </div>
+                  )}
 
                   {/* Tech */}
                   <div>

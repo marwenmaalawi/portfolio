@@ -115,6 +115,8 @@
 
 html {
   scroll-behavior: smooth;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -125,6 +127,12 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+p, .justify-text {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 /* ============================================================
@@ -141,20 +149,10 @@ body::after {
 }
 
 /* ============================================================
-   SCROLLBAR
+   SCROLLBAR (Hidden for App-like feel)
    ============================================================ */
 ::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-base);
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #6366f1, #8b5cf6);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #818cf8, #a78bfa);
+  display: none;
 }
 
 /* ============================================================
@@ -819,12 +817,18 @@ section[id] {
 @media (max-width: 1024px) {
   .hero-3d-container {
     width: 100%;
-    opacity: 0.25;
+    opacity: 0.3;
   }
 }
 
 @media (max-width: 768px) {
   .hero-3d-container {
+    opacity: 0.15;
+    /* Removed display: none so the animation still runs but is subtle */
+  }
+  
+  /* Disable heavy SVG grain filter on mobile to massively improve FPS */
+  body::after {
     display: none;
   }
 }

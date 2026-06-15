@@ -37,8 +37,8 @@ function NetworkTopology() {
     innerRef.current.position.y = meshRef.current.position.y;
   });
 
-  const wireColor = theme === "light" ? "#6366f1" : "#8b5cf6";
-  const innerColor = theme === "light" ? "#06b6d4" : "#06b6d4";
+  const wireColor = theme === "light" ? "#4f46e5" : "#8b5cf6"; // Bolder indigo for light theme
+  const innerColor = theme === "light" ? "#0891b2" : "#06b6d4"; // Bolder cyan for light theme
 
   return (
     <Float speed={1} rotationIntensity={0.2} floatIntensity={0.5}>
@@ -49,7 +49,7 @@ function NetworkTopology() {
           color={wireColor}
           wireframe={true}
           transparent
-          opacity={theme === "light" ? 0.15 : 0.25}
+          opacity={theme === "light" ? 0.45 : 0.4}
         />
       </mesh>
 
@@ -60,7 +60,7 @@ function NetworkTopology() {
           color={innerColor}
           wireframe={true}
           transparent
-          opacity={theme === "light" ? 0.2 : 0.3}
+          opacity={theme === "light" ? 0.5 : 0.45}
         />
       </mesh>
     </Float>
